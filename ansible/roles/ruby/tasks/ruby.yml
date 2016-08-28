@@ -1,0 +1,10 @@
+---
+
+- include_vars: ../vars/ruby.yml
+
+- name: installs dependencies.
+  yum: name={{ item }}
+  with_items: ruby.depends
+
+- name: installs ruby.
+  yum: name=ruby

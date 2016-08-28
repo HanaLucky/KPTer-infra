@@ -1,0 +1,28 @@
+---
+
+__ntp__: {
+  servers: [
+    ntp1.jst.mfeed.ad.jp,
+    ntp2.jst.mfeed.ad.jp,
+    ntp3.jst.mfeed.ad.jp
+  ]
+}
+
+__i18n__: {
+  lang: ja_JP.UTF-8,
+  sysfont: latarcyrheb-sun16
+}
+
+__keyboard__: {
+  keytable: jp106,
+  model: jp106,
+  layout: jp,
+  keyboardtype: pc
+}
+
+__git__: {
+  user: {
+    name: undefined,
+    email: undefined
+  }
+}

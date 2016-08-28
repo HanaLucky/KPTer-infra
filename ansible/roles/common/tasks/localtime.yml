@@ -1,0 +1,4 @@
+---
+
+- name: sets localtime.
+  file: src=/usr/share/zoneinfo/Japan dest=/etc/localtime  state=link force=yes

@@ -1,0 +1,4 @@
+---
+
+- name: installs tig.
+  yum: name=tig enablerepo=epel

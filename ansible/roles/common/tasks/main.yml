@@ -1,0 +1,12 @@
+---
+
+- include: yum.yml
+- include: kernel.yml
+- include: file-descriptor.yml
+- include: selinux.yml
+- include: service.yml
+- include: localtime.yml
+- include: ntp.yml
+- include: i18n.yml
+- include: keyboard.yml
+- include: bash.yml

@@ -1,0 +1,7 @@
+---
+
+# 当環境はモックのためiptableを停止。
+# また以下のデーモンを止めようとするとエラーになるため一旦放置。
+# [avahi-daemon, kump]
+
+service: { procs: [auditd, blk-availability, lvm2-monitor, iptables, ip6tables] }

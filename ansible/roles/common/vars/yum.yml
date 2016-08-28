@@ -1,0 +1,17 @@
+---
+
+yum: {
+  pkgs: [
+    { name: gcc },
+    { name: gcc-c++ },
+    { name: make },
+    { name: openssh-clients },
+    { name: bash-completion, enablerepo: epel },
+    { name: man },
+    { name: vim },
+    { name: git },
+    { name: dstat, enablerepo: epel },
+    { name: htop,  enablerepo: epel },
+    { name: lsof }
+  ]
+}

@@ -1,0 +1,27 @@
+---
+
+- name: exists '$HOME/.bashrc'?
+  stat: path=/home/{{ ansible_ssh_user }}/.bashrc
+  register: stats
+
+- name: copies '/etc/skel/.bashrc' to '$HOME/.bashrc'.
+  shell: cp -p /etc/skel/.bashrc /home/{{ ansible_ssh_user }}/.bashrc
+  sudo: no
+  when: not stats.stat.exists
+
+- name: sets prompt for regular users.
+  lineinfile: dest=/home/{{ ansible_ssh_user}}/.bashrc regexp=^PS1=
+    line="PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'"
+  sudo: no
+
+- name: exists '/root/.bashrc'?
+  stat: path=/root/.bashrc
+  register: stats
+
+- name: copies '/etc/skel/.bashrc' to '/root'.
+  shell: cp -p /etc/skel/.bashrc /root/.bashrc
+  when: not stats.stat.exists
+
+- name: sets prompt for root.
+  lineinfile: dest=/root/.bashrc regexp=^PS1=
+    line="PS1='\[\e[0;31m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]\[\e[0;32m\]'"

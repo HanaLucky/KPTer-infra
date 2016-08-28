@@ -1,0 +1,15 @@
+[user]
+  name  = {{ __git__.user.name }}
+  email = {{ __git__.user.email }}
+[core]
+  excludesfile = ~/.gitignore
+  pager        = less -R
+  editor       = vim
+[color]
+  ui = auto
+[pull]
+  rebase = true
+[push]
+  default = current
+[include]
+  path = ~/.gitconfig.local

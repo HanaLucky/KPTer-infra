@@ -1,0 +1,17 @@
+---
+
+- include_vars: ../vars/yum.yml
+
+- name: updates all packages.
+  yum: name=* state=latest
+
+- name: installs epel-release.
+  yum: name=epel-release
+
+- name: disables epel-release.
+  ini_file: dest=/etc/yum.repos.d/epel.repo section=epel
+    option=enabled value=0
+
+- name: installs yum packages.
+  yum: name={{ item.name }} enablerepo={{ item.enablerepo | default(omit) }}
+  with_items: yum.pkgs

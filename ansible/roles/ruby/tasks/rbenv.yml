@@ -1,0 +1,25 @@
+---
+
+- name: clones rbenv to '$HOME'.
+  git: repo=https://github.com/sstephenson/rbenv.git dest=/home/{{ ansible_ssh_user }}/.rbenv accept_hostkey=yes
+  register: is_cloned
+
+- name: sets path.
+  shell: echo -e 'export PATH="$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' >> /home/{{ ansible_ssh_user }}/.bashrc
+  when: is_cloned | changed
+  notify: reload bash
+
+- name: clones ruby-build to '$HOME/.rbenv/plugins'
+  git: repo=https://github.com/sstephenson/ruby-build.git
+    dest=/home/{{ ansible_ssh_user }}/.rbenv/plugins/ruby-build accept_hostkey=yes
+
+- name: lists versions.
+  shell: rbenv versions
+  register: list
+  changed_when: False
+  failed_when:  False
+
+- name: installs versions.
+  shell: rbenv install {{ item }}
+  when: ___rbenv___.versions is defined and list.stdout.find("{{ item }}") == -1
+  with_items: ___rbenv___.versions

@@ -1,0 +1,13 @@
+---
+
+___rbenv___: {
+  versions: [
+    2.2.2
+  ]
+}
+
+___gem___: {
+  gems: [
+    { name: bundler, executable: "/home/vagrant/.rbenv/versions/2.2.2/bin/gem" }
+  ]
+}

@@ -1,0 +1,4 @@
+---
+
+- name: reload keyboard
+  shell: source /etc/sysconfig/keyboard

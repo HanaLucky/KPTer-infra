@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.require_version '>= 1.6.0'
+
+require File.expand_path('mod.rb', File.dirname( __FILE__))
+include Vagrants
+
+VAGRANTFILE_API_VERSION = '2'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = 'nrel/CentOS-6.5-x86_64'
+  config.ssh.insert_key = false
+  # config.vm.box_check_update = false
+
+  config.vm.define :develop do |develop|
+    develop.vm.hostname = 'develop'
+    develop.vm.network 'private_network', ip: '192.168.33.60'
+    develop.vm.network 'private_network', ip: '192.168.33.61'
+    develop.ssh.forward_agent = true
+    develop.vm.provider :virtualbox do |vb|
+      vb.customize ['modifyvm', :id, '--memory', '1024', '--cpus', '1', '--ioapic', 'on']
+    end
+    Vagrants.port_forwarding(develop.vm, :'3000' => 13000)
+  end
+
+  Vagrants.ansible_playbook(config.vm, 'site.yml')
+end

@@ -1,0 +1,9 @@
+[webservers]
+192.168.33.60 ansible_ssh_user=vagrant
+
+[dbservers]
+192.168.33.60
+
+[allservers:children]
+webservers
+dbservers

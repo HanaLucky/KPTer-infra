@@ -1,0 +1,10 @@
+---
+
+rails: {
+  depends: [
+    ruby-devel,
+    libxml2-devel,
+    libxslt-devel
+    # sqlite-devel
+  ]
+}

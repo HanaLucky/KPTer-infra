@@ -1,0 +1,4 @@
+---
+
+- name: reload bash
+  shell: source /home/{{ ansible_ssh_user }}/.bashrc

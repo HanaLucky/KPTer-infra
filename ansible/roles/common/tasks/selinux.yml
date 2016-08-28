@@ -1,0 +1,7 @@
+---
+
+- name: installs libselinux-python.
+  yum: name=libselinux-python enablerepo=epel
+
+- name: disables selinux.
+  selinux: state=disabled

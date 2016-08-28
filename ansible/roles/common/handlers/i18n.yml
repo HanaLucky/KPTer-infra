@@ -1,0 +1,4 @@
+---
+
+- name: reload i18n
+  shell: source /etc/sysconfig/i18n

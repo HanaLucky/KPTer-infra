@@ -1,0 +1,12 @@
+---
+
+- name: installs ntp.
+  yum: name=ntp
+
+- name: copies 'ntp.conf' to '/etc' after renders.
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+    owner=root group=root mode=0644
+  notify: restart ntpd
+
+- name: starts ntp.
+  service: name=ntpd state=started enabled=yes

@@ -1,0 +1,7 @@
+---
+
+- include_vars: ../vars/service.yml
+
+- name: disables services.
+  service: name={{ item }} state=stopped enabled=no
+  with_items: service.procs

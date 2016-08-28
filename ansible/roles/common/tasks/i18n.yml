@@ -1,0 +1,6 @@
+---
+
+- name: copies 'i18n' to '/etc/sysconfig' after renders.
+  template: src=i18n.j2 dest=/etc/sysconfig/i18n
+    owner=root group=root mode=0644
+  notify: reload i18n

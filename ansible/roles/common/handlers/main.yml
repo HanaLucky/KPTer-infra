@@ -1,0 +1,6 @@
+---
+
+- include: kernel.yml
+- include: ntp.yml
+- include: i18n.yml
+- include: keyboard.yml

@@ -1,0 +1,10 @@
+---
+
+ruby: {
+  depends: [
+    openssl,
+    openssl-devel,
+    readline-devel,
+    zlib-devel
+  ]
+}

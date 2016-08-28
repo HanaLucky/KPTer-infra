@@ -1,0 +1,6 @@
+---
+
+- name: copies 'keyboard' to '/etc/sysconfig' after renders.
+  template: src=keyboard.j2 dest=/etc/sysconfig/keyboard
+    owner=root group=root mode=0644
+  notify: reload keyboard

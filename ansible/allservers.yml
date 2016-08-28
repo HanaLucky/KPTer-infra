@@ -1,0 +1,8 @@
+---
+
+- hosts: allservers
+  sudo: yes
+  gather_facts: no
+  roles:
+    - { role: common, tags: [always] }
+    - { role: git,    tags: [git] }

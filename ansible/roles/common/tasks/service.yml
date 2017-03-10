@@ -4,4 +4,4 @@
 
 - name: disables services.
   service: name={{ item }} state=stopped enabled=no
-  with_items: service.procs
+  with_items: "{{ service.procs }}"

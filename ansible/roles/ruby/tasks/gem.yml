@@ -6,5 +6,5 @@
 - name: installs gems.
   gem: name={{ item.name }} version={{ item.version | default(omit) }}
     executable={{ item.executable | default(omit) }} user_install=no
+  with_items: "{{ ___gem___.gems }}"
   when: ___gem___.gems is defined
-  with_items: ___gem___.gems

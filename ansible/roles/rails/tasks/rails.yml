@@ -4,4 +4,4 @@
 
 - name: installs dependencies.
   yum: name={{ item }}
-  with_items: rails.depends
+  with_items: "{{ rails.depends }}"

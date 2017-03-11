@@ -14,4 +14,4 @@
 
 - name: installs yum packages.
   yum: name={{ item.name }} enablerepo={{ item.enablerepo | default(omit) }}
-  with_items: yum.pkgs
+  with_items: "{{ yum.pkgs }}"

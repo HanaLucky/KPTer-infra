@@ -9,7 +9,7 @@ include Vagrants
 VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'nrel/CentOS-6.5-x86_64'
+  config.vm.box = 'centos/7'
   config.ssh.insert_key = false
   # config.vm.box_check_update = false
 

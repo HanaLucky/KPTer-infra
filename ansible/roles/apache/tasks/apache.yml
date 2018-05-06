@@ -4,12 +4,5 @@
   yum: name={{ item }}
   with_items: [httpd]
 
-- name: copies configuration files to '/etc/httpd/conf'.
-  copy: src={{ item }} dest=/etc/httpd/conf/{{ item | basename }}
-    owner=root group=root mode=0644
-  with_items:
-    - httpd.conf
-  notify: reload httpd
-
 - name: starts httpd.
   service: name=httpd state=started enabled=yes

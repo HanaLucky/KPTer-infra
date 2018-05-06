@@ -8,11 +8,11 @@
    - role: jre
      tags: [jre, vim, logstash]
      when: inventory_file | basename == 'develop'
-   - role: mysql-devel
-     tags: [mysql-devel]
    - role: ruby
      tags: [ruby, rails]
    - role: rails
      tags: [rails]
    - role: apache
      tags: [apache]
+   - role: redis
+     tags: [redis]

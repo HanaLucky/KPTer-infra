@@ -1,15 +1,18 @@
 ---
 
-- name: copies 'mysql-community-release-el6-5.noarch' to '/usr/local/src'.
-  copy: src=mysql-community-release-el6-5.noarch.rpm
-    dest=/usr/local/src/mysql-community-release-el6-5.noarch.rpm
-    owner=root group=root mode=0644
+- name: downloaing the MySQL Yum Repository
+  get_url:
+    url: https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+    dest: /usr/local/src/mysql80-community-release-el7-1.noarch.rpm
+    mode: 0644
 
-- name: installs mysql-community-server rpm.
-  yum: name=/usr/local/src/mysql-community-release-el6-5.noarch.rpm
+- name: adding the MySQL Yum Repository
+  yum:
+    name: /usr/local/src/mysql80-community-release-el7-1.noarch.rpm
+    state: present
 
 - name: installs mysql-community-server.
-  yum: name=mysql-community-server enablerepo=mysql56-community
+  yum: name=mysql-community-server enablerepo=mysql57-community
 
 - name: copies 'my.cnf' to '/etc'.
   copy: src=my.cnf dest=/etc/my.cnf
@@ -18,6 +21,9 @@
 
 - name: starts mysqld.
   service: name=mysqld state=started enabled=yes
+
+- name: installs mysql-devel.
+  yum: name=mysql-devel enablerepo=mysql57-community
 
 - name: installs MySQL-python.
   yum: name=MySQL-python

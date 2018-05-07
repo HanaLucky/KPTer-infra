@@ -1,0 +1,19 @@
+---
+
+- include_vars: ../vars/redis.yml
+
+- name: wget git
+  get_url:
+    url: "http://download.redis.io/releases/redis-{{ redis_version }}.tar.gz"
+    dest: "{{ src_dir }}"
+
+- name: unarchive redis-{{ redis_version }}.tar.gz
+  shell: tar xvzf "{{ src_dir }}/redis-{{ redis_version }}.tar.gz" -C /usr/local
+
+- name: make prefix=/usr/local all
+  command: chdir=/usr/local/redis-{{ redis_version }} make prefix=/usr/local all
+  become: yes
+
+- name: make prefix=/usr/local install
+  command: chdir=/usr/local/redis-{{ redis_version }} make prefix=/usr/local install
+  become: yes

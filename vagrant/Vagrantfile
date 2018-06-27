@@ -14,8 +14,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.box_check_update = false
 
   config.vm.define :develop do |develop|
-    develop.vm.hostname = 'kpter-dev'
+    develop.vm.hostname = 'localhost'
     develop.vm.network 'private_network', ip: '192.168.33.60'
+    config.hostsupdater.aliases = ["local.kpter.net", "en.local.kpter.net"]
     develop.ssh.forward_agent = true
     develop.vm.provider :virtualbox do |vb|
       vb.customize ['modifyvm', :id, '--memory', '1024', '--cpus', '1', '--ioapic', 'on']
